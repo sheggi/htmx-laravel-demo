@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ExampleController;
 use App\Http\Controllers\Api\GetTime;
+use App\Http\Controllers\Api\OobController;
 use App\Http\Middleware\HtmxPageWrapper;
 use App\Http\Middleware\HtmxPreviewWrapper;
 use Illuminate\Http\Request;
@@ -26,4 +27,6 @@ Route::group(['middleware' =>[HtmxPageWrapper::class, HtmxPreviewWrapper::class]
    Route::get('time', GetTime::class)->name('time');
    Route::get('example', ExampleController::class)->name('example');
    Route::post('example', ExampleController::class);
+   Route::get('oob', OobController::class)->name('oob.index');
+   Route::get('oob/{other}', OobController::class)->name('oob.other');
 });
