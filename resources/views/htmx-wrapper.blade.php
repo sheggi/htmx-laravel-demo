@@ -22,6 +22,14 @@
     </style>
 </head>
 <body class="antialiased">
+
 {!! $content !!}
+
+<!-- setup CSRF for Laravel -->
+<script>
+    document.body.addEventListener('htmx:configRequest', function(event) {
+        event.detail.headers['X-CSRF-TOKEN'] = '{{ csrf_token() }}';
+    });
+</script>
 </body>
 </html>
