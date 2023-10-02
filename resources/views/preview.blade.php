@@ -1,3 +1,3 @@
-<div hx-trigger="every 1s" hx-get="{{request()->header('Hx-Current-Url')}}">
+<div hx-trigger="every 1s" hx-get="">
 {!! $content !!}
 </div>
