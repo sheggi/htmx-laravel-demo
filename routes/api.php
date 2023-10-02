@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ExampleController;
 use App\Http\Controllers\Api\GetTime;
 use App\Http\Middleware\HtmxPageWrapper;
 use App\Http\Middleware\HtmxPreviewWrapper;
@@ -23,4 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['middleware' =>[HtmxPageWrapper::class, HtmxPreviewWrapper::class], 'as' => 'api.'], function (){
    Route::get('time', GetTime::class)->name('time');
+   Route::get('example', ExampleController::class)->name('example');
+   Route::post('example', ExampleController::class);
 });
