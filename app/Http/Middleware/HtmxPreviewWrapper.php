@@ -11,15 +11,16 @@ class HtmxPreviewWrapper
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->header('Hx-Request')) {
-            return $next($request);
+        $response = $next($request);
+
+        if ($request->header('Hx-Request') || !config('app.hx-reload')) {
+            return $response;
         }
 
-        $response =  $next($request);
         $response->setContent(view('preview', ['content' => $response->getContent()]));
         return $response;
     }

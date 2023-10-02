@@ -12,6 +12,7 @@ class GetTime extends Controller
      */
     public function __invoke(Request $request)
     {
+        config(['app.hx-reload' => true]);
         return time();
     }
 }

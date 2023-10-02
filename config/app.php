@@ -5,6 +5,8 @@ use Illuminate\Support\ServiceProvider;
 
 return [
 
+    'hx-reload' => env('HX_RELOAD', false),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
